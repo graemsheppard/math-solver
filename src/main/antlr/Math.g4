@@ -1,15 +1,13 @@
 grammar Math;
 
-expression          : term ((ADD | SUB) term)*;
-term                : factor ((MUL | DIV) factor)*;
-factor              : '(' expression ')'
+expression          : term (ADDSUB term)*;
+term                : factor (MULDIV factor)*;
+factor              : LB expression RB
                     | VALUE;
 
 VALUE               : [1-9][0-9]*;
 
-ADD                 : '+';
-SUB                 : '-';
-MUL                 : '*';
-DIV                 : '/';
+ADDSUB              : '+' | '-';
+MULDIV              : '*' | '/';
 LB                  : '(';
 RB                  : ')';
